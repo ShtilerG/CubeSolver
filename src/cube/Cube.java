@@ -778,4 +778,66 @@ public class Cube
         }
         else history.add("Unrecognized command: \""+move+"\"");
     }
+    public void printCube() {
+        // Flat view representation of the cube
+        // Assuming ' ' represents an empty space
+        char[][] flatCube = new char[9][12];
+
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 12; j++) {
+                flatCube[i][j] = ' ';
+            }
+        }
+
+        // Fill the flat view with block colors
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (cube[0][i][j].up == 'v') {
+                    flatCube[i + 3][j + 3] = 'W';
+                } else {
+                    flatCube[i + 3][j + 3] = cube[0][i][j].up;
+                }
+            }
+        }
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                flatCube[i + 3][j + 6] = cube[1][i][j].down;
+            }
+        }
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                flatCube[i + 3][j] = cube[i][j][0].left;
+            }
+        }
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                flatCube[i + 3][j + 9] = cube[i][j][2].right;
+            }
+        }
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                flatCube[i][j + 3] = cube[i][0][j].back;
+            }
+        }
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                flatCube[i + 6][j + 3] = cube[i][2][j].face;
+            }
+        }
+
+        // Fill the middle layer with the yellow color
+        for (int i = 3; i < 6; i++) {
+            for (int j = 3; j < 6; j++) {
+                flatCube[i][j] = cube[2][i - 3][j - 3].down;
+            }
+        }
+
+        // Print the flat view of the cube
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 12; j++) {
+                System.out.print(flatCube[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
 }

@@ -94,7 +94,7 @@ public class Block
        this.down = this.back;
        this.back = temp;
    }
-   public void ri() // rotation of the right face by 90 deg anti-clockwise
+   public void ri() // rotation of the right face by 90 deg anti-clockwiseA
    {
        char temp = this.up;
        this.up = this.back;

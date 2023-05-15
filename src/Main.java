@@ -43,9 +43,10 @@ public class Main {
                     c.clear_history();
                     Cube_solver.solve(c,0);
                     System.out.println(c.getHistory());
+                    System.out.println(c.getHistory().size());
                     break;
                 case '3':
-                    printCube(c);
+                    c.printCube();
                     break;
                 case '4':
                     System.out.println("Enter a move:");
@@ -57,32 +58,6 @@ public class Main {
                     break;
             }
         }while(selection != '5');
-
-    }
-    public static void printCube(Cube c) {
-        // Print top face
-        System.out.print("      ");
-        for(int i = 0; i < 3; i++) {
-            System.out.print(c.get_col(new int[]{0, i, 1}, 'u') + " ");
-        }
-        System.out.println();
-
-        for(int i = 0; i < 3; i++) {
-            System.out.print("      ");
-            for(int j = 0; j < 3; j++) {
-                System.out.print(c.get_col(new int[]{0, j, 2-i}, 'b') + " ");
-            }
-            System.out.print(c.get_col(new int[]{0, 2-i, 0}, 'l') + " ");
-            System.out.print(c.get_col(new int[]{0, 2-i, 2}, 'r') + " ");
-            System.out.println(c.get_col(new int[]{0, 0, i}, 'f') + " ");
-        }
-
-        // Print bottom face
-        System.out.print("      ");
-        for(int i = 0; i < 3; i++) {
-            System.out.print(c.get_col(new int[]{2, i, 1}, 'd') + " ");
-        }
-        System.out.println();
     }
 
 
